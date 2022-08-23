@@ -1,0 +1,14 @@
+<h2>詳細</h2>
+<table class='table'>
+  <tr>
+    <td><%= @spot.spot_name %></td>
+    <td><%= @spot.caught_fish %></td>
+    <td><%= image_tag @spot.get_image, size: '200x200' %></td>
+    <td><%= @spot.user.name %></td>
+    <td><%= @spot.created_at.strftime('%Y/%m/%d') %></td>
+    <td><% if @spot.user == current_user %>
+          <%= link_to "削除", spot_path(@spot), method: :delete, "data-confirm" => 'Are you sure?', class: "btn btn-sm btn-danger" %>
+        <% end %>
+    </td>
+  </tr>
+</table>

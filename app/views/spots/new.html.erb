@@ -1,0 +1,10 @@
+<h1>釣り場投稿フォーム</h1>
+<%= form_with model: @spot do |f| %>
+  <%= f.label :釣り場 %>
+  <%= f.text_field :spot_name %><br>
+  <%= f.label :釣果 %>
+  <%= f.text_field :caught_fish %><br>
+  <%= f.label :画像 %>
+  <%= f.file_field :image, class: "image" %>
+  <%= f.submit "投稿", class: "btn btn-primary" %>
+<% end %>
