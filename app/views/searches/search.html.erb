@@ -1,0 +1,18 @@
+<h2>検索一覧</h2>
+
+<table class="table table-hover table-inverse">
+  <!--検索対象モデルがSpotの時 -->
+  <% if @range == "Spot" %>
+    <tbody>
+      <% @spots.each do |spot| %>
+        <tr>
+          <td><%= spot.prefecture_name %></td>
+          <%= link_to spot_path(spot.id) do %>
+            <td><%= spot.spot_name %></td>
+          <% end %>
+        </tr>
+      <% end %>
+      <%= link_to "戻る", spots_path %>
+    </tbody>
+  <% end %>
+</table>

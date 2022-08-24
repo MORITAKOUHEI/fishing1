@@ -10,4 +10,20 @@ class Spot < ApplicationRecord
     end
     image
   end
+
+
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @spot = Spot.where("prefecture_name LIKE?", "#{word}")
+    elsif search == "forward_match"
+      @spot = Spot.where("prefecture_name LIKE?","#{word}%")
+    elsif search == "backward_match"
+      @spot = Spot.where("prefecture_name LIKE?","%#{word}")
+    elsif search == "partial_match"
+      @spot = Spot.where("prefecture_name LIKE?","%#{word}%")
+    else
+      @spot = Spot.all
+    end
+  end
+
 end

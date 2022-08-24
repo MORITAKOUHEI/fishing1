@@ -1,0 +1,41 @@
+<div class='container'>
+  <div class='row'>
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+    	<h1>投稿編集</h1>
+    	<%= form_with model: @spot do |f| %>
+    		<% if @spot.errors.any? %>
+          <div id="error_explanation">
+
+            <h3><%= @spot.errors.count %> errors prohibited this obj from</br>
+                                          being saved:</h3>
+              <ul>
+                <% @spot.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+          </div>
+        <% end %>
+    	  <div class="form-group">
+          <%= f.label :県名 %><br>
+          <%= f.text_field :prefecture_name, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :釣り場 %>
+          <%= f.text_field :spot_name, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :釣果 %><br>
+          <%= f.text_field :caught_fish, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :画像 %>
+          <%= f.file_field :image, class: "image" %>
+        </div>
+        <div class="form-group">
+          <%= f.submit '投稿', class: "btn btn-success" %>
+        </div>
+        <%= link_to '詳細', spot_path(@spot) %> | <%= link_to "戻る", spots_path %>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -3,9 +3,8 @@
 <table>
   <thead>
     <tr>
+      <th>県名</th>
       <th>釣り場</th>
-      <th>釣果</th>
-      <th>画像</th>
     </tr>
   </thead>
 </table>
@@ -13,11 +12,10 @@
 <tbody>
   <% @spots.each do |spot| %>
     <tr>
+      <td><%= spot.prefecture_name %></td>
       <%= link_to spot_path(spot.id) do %>
         <td><%= spot.spot_name %></td>
       <% end %>
-      <td><%= spot.caught_fish %></td>
-      <td><%= image_tag spot.get_image, size: '100x100' %></td>
     </tr>
   <% end %>
 </tbody>

@@ -1,5 +1,7 @@
 <h1>釣り場投稿フォーム</h1>
 <%= form_with model: @spot do |f| %>
+  <%= f.label :県名 %>
+  <%= f.text_field :prefecture_name %><br>prefecture_name
   <%= f.label :釣り場 %>
   <%= f.text_field :spot_name %><br>
   <%= f.label :釣果 %>
