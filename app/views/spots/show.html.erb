@@ -27,4 +27,31 @@
       </td>
     </tr>
   </tbody>
+
+    <% if @spot.favorited_by?(current_user) %>
+      <%= link_to spot_favorites_path(@spot), method: :delete do %>
+        ♥<%= @spot.favorites.count %> いいね
+      <% end %>
+    <% else %>
+      <%= link_to spot_favorites_path(@spot), method: :post do %>
+        ♡<%= @spot.favorites.count %> いいね
+      <% end %>
+    <% end %>
+
+    <div>
+      <p>コメント件数：<%= @spot.spot_comments.count %></p>
+      <% @spot.spot_comments.each do |spot_comment| %>
+        <%= spot_comment.user.name %>
+        <%= spot_comment.created_at.strftime('%Y/%m/%d') %><%= spot_comment.comment %>
+        <% if spot_comment.user == current_user %>
+          <%= link_to "削除", spot_spot_comment_path(spot_comment.spot, spot_comment), method: :delete %>
+        <% end %>
+      <% end %>
+    </div>
+    <div>
+      <%= form_with model: [@spot, @spot_comment] do |f| %>
+        <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+        <%= f.submit "送信する" %>
+      <% end %>
+    </div>
 </table>

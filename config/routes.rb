@@ -5,9 +5,14 @@ Rails.application.routes.draw do
 
   root to: 'homes#top'
   get "homes/about" => "homes#about", as: "about"
-  resources :spots, only: [:new, :index, :show, :edit, :create, :destroy, :update]
+
+  resources :spots, only: [:new, :index, :show, :edit, :create, :destroy, :update] do
+    resource :favorites, only: [:create, :destroy]
+    resources :spot_comments, only: [:create, :destroy]
+  end
+
   get "search" => "searches#search"
-  
+
   devise_scope :user do
     post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
   end
