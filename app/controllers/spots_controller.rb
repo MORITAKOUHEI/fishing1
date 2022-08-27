@@ -32,7 +32,7 @@ class SpotsController < ApplicationController
   def update
     @spot = Spot.find(params[:id])
     if @spot.update(spot_params)
-      flash[:notice] = "You have updated spot successfully."
+      flash[:notice] = "編集されました"
       redirect_to spot_path(@spot.id)
     else
       render :edit

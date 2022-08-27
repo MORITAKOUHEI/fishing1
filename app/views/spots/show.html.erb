@@ -22,7 +22,7 @@
           <% end %>
       </td>
       <td><% if @spot.user == current_user %>
-            <%= link_to "削除", spot_path(@spot), method: :delete, "data-confirm" => 'Are you sure?', class: "btn btn-sm btn-danger" %>
+            <%= link_to "削除", spot_path(@spot), method: :delete, "data-confirm" => '投稿を削除しますか?', class: "btn btn-sm btn-danger" %>
           <% end %>
       </td>
     </tr>

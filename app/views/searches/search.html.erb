@@ -7,9 +7,7 @@
       <% @spots.each do |spot| %>
         <tr>
           <td><%= spot.prefecture_name %></td>
-          <%= link_to spot_path(spot.id) do %>
-            <td><%= spot.spot_name %></td>
-          <% end %>
+          <td><%= link_to spot.spot_name, spot_path(spot.id) %></td>
         </tr>
       <% end %>
       <%= link_to "戻る", spots_path %>

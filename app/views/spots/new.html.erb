@@ -1,12 +1,29 @@
-<h1>釣り場投稿フォーム</h1>
-<%= form_with model: @spot do |f| %>
-  <%= f.label :県名 %>
-  <%= f.text_field :prefecture_name %><br>
-  <%= f.label :釣り場 %>
-  <%= f.text_field :spot_name %><br>
-  <%= f.label :釣果 %>
-  <%= f.text_field :caught_fish %><br>
-  <%= f.label :画像 %>
-  <%= f.file_field :image, class: "image" %>
-  <%= f.submit "投稿", class: "btn btn-primary" %>
-<% end %>
+<div class='container'>
+  <div class='row'>
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h1>釣り場投稿フォーム</h1>
+      <%= form_with model: @spot do |f| %>
+        <div class="form-group">
+          <%= f.label :県名 %><br>
+          <%= f.text_field :prefecture_name, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :釣り場 %>
+          <%= f.text_field :spot_name, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :釣果 %><br>
+          <%= f.text_field :caught_fish, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :画像 %>
+          <%= f.file_field :image, class: "image" %>
+        </div>
+        <div class="form-group">
+          <%= f.submit '投稿', class: "btn btn-success" %>
+        </div>
+        <%= link_to "戻る", spots_path %>
+      <% end %>
+    </div>
+  </div>
+</div>

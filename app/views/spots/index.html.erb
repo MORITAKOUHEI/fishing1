@@ -1,21 +1,17 @@
 <h2>一覧</h2>
-
-<table>
+<table class="table">
   <thead>
     <tr>
-      <th>県名</th>
-      <th>釣り場</th>
+      <th scope="col">県名</th>
+      <th scope="col">釣り場</th>
     </tr>
   </thead>
+  <tbody>
+    <% @spots.each do |spot| %>
+      <tr>
+        <td><%= spot.prefecture_name %></td>
+        <td><%= link_to spot.spot_name, spot_path(spot.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
-
-<tbody>
-  <% @spots.each do |spot| %>
-    <tr>
-      <td><%= spot.prefecture_name %></td>
-      <%= link_to spot_path(spot.id) do %>
-        <td><%= spot.spot_name %></td>
-      <% end %>
-    </tr>
-  <% end %>
-</tbody>
