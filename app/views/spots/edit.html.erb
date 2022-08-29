@@ -6,8 +6,7 @@
     		<% if @spot.errors.any? %>
           <div id="error_explanation">
 
-            <h3><%= @spot.errors.count %> errors prohibited this obj from</br>
-                                          being saved:</h3>
+            <h3><%= @spot.errors.count %>件のエラーが発生しました</h3>
               <ul>
                 <% @spot.errors.full_messages.each do |message| %>
                   <li><%= message %></li>

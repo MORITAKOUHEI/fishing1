@@ -4,6 +4,12 @@ class Spot < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :spot_comments, dependent: :destroy
 
+  #バリデーション設定
+  validates :prefecture_name, presence: true
+  validates :spot_name, presence: true
+  validates :caught_fish, presence: true
+
+
   def get_image
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/fishing.png')

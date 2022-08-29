@@ -4,7 +4,7 @@ class SpotsController < ApplicationController
   end
 
   def index
-    @spots = Spot.all
+    @spots = Spot.page(params[:page])
   end
 
   def show
@@ -25,8 +25,11 @@ class SpotsController < ApplicationController
   def create
     @spot = Spot.new(spot_params)
     @spot.user_id = current_user.id
-    @spot.save
+    if @spot.save
     redirect_to spots_path
+    else
+      render :new
+    end
   end
 
   def update

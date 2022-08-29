@@ -26,6 +26,7 @@
           <% end %>
       </td>
     </tr>
+    <div><%= link_to "一覧へ", spots_path %></div>
   </tbody>
 
     <% if @spot.favorited_by?(current_user) %>
@@ -41,10 +42,9 @@
     <div>
       <p>コメント件数：<%= @spot.spot_comments.count %></p>
       <% @spot.spot_comments.each do |spot_comment| %>
-        <%= spot_comment.user.name %>
-        <%= spot_comment.created_at.strftime('%Y/%m/%d') %><%= spot_comment.comment %>
+        <p><%= spot_comment.created_at.strftime('%Y/%m/%d') %><%= spot_comment.comment %>
         <% if spot_comment.user == current_user %>
-          <%= link_to "削除", spot_spot_comment_path(spot_comment.spot, spot_comment), method: :delete %>
+          <%= link_to "削除", spot_spot_comment_path(spot_comment.spot, spot_comment), method: :delete %></p>
         <% end %>
       <% end %>
     </div>
